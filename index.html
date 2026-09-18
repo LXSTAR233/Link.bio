@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>103_PU | Gaming Creator &amp; Streamer</title>
+
+    <!-- Share preview: this is the only part of the page that works BEFORE the page
+         loads, and it decides whether the tap happens at all. -->
+    <meta name="description" content="103_PU — Gaming Creator &amp; Streamer. TikTok, YouTube, Discord và Valorant Tweaks.">
+    <meta name="theme-color" content="#0a0a0f">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="103_PU | Gaming Creator &amp; Streamer">
+    <meta property="og:description" content="Tất cả link của 103_PU: TikTok, YouTube, Discord và Valorant Tweaks.">
+    <meta property="og:image" content="./assets/avatar.jpg">
+    <meta property="og:url" content="https://103punewbio.vercel.app/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="103_PU | Gaming Creator &amp; Streamer">
+    <meta name="twitter:description" content="Tất cả link của 103_PU: TikTok, YouTube, Discord và Valorant Tweaks.">
+    <meta name="twitter:image" content="./assets/avatar.jpg">
+
+    <!-- Runs before any stylesheet, so a slow CDN can never delay it.
+         CSS keys every JS-gated hidden state off .js: without it the page renders fully visible. -->
+    <script>document.documentElement.classList.add('js');</script>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/avatar.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Third-party CSS loaded non-blocking. An external stylesheet blocks script
+         execution, so a hung CDN used to stall js/main.js and leave the page
+         permanently blurred with zero visible links. -->
+    <link rel="stylesheet" media="print" onload="this.media='all'"
+          href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Outfit:wght@300;500;800&family=Space+Mono:wght@700&display=swap">
+    <link rel="stylesheet" media="print" onload="this.media='all'"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Outfit:wght@300;500;800&family=Space+Mono:wght@700&display=swap">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
+    
+</head>
+
+<body class="is-loading">
+
+    <div id="cinematic-intro">
+        <div class="intro-bg"></div>
+        <div class="intro-content">
+            <div class="intro-line line-1">WELCOME TO MY UNIVERSE</div>
+            <div class="intro-line line-2">103_PU</div>
+        </div>
+        <!-- The intro used to hold every link hostage for 4s with no way out.
+             It still plays, but now it is skippable and only once per session. -->
+        <button type="button" id="intro-skip" class="intro-skip">SKIP &rsaquo;</button>
+    </div>
+
+    <div class="bg-video" aria-hidden="true">
+        <video id="bg-video-player" autoplay muted loop playsinline preload="metadata" poster="assets/avatar.jpg">
+            <source src="assets/background.webm" type="video/webm">
+            <source src="assets/background.mp4" type="video/mp4">
+        </video>
+    </div>
+    <audio id="bg-audio-player" autoplay loop preload="metadata">
+        <source src="assets/chill.mp3" type="audio/mpeg">
+        <source src="assets/background.mp4" type="video/mp4">
+    </audio>
+    <div class="bg-overlay"></div>
+    <div class="bg-text-effect">103_PU</div>
+    <div class="bg-particles"></div>
+    <div class="bg-gradient"></div>
+
+    <main class="main-wrapper">
+        <div class="bento-grid">
+
+            <div class="card card--profile js-tilt">
+                <div class="shimmer-layer"></div>
+                <div class="card__content">
+                    <div class="profile-img-box">
+                        <img src="assets/avatar.jpg" onerror="this.src='https://images.unsplash.com/photo-1620247407367-b364392d2906?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" alt="103_PU" class="profile-img">
+                        <div class="status-indicator"></div>
+                    </div>
+                    <div class="profile-info">
+                        <h1 class="glitch-text" data-text="103_PU">Văn Lương</h1>
+                        <p class="profile-tag">Học Sinh THCS BẢN LẦM</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-title title-social">
+                <span>/// SOCIAL MEDIA</span>
+                <div class="line"></div>
+            </div>
+
+            <a href="https://www.tiktok.com/@van_luong27" target="_blank" rel="noopener" class="card card--tiktok js-tilt">
+                <div class="animated-border"></div>
+                <div class="card__bg-icon"><i class="fa-brands fa-tiktok"></i></div>
+                <div class="card__content">
+                    <div class="card__header">
+                        <i class="fa-brands fa-tiktok card__icon"></i>
+                        <span class="card__badge">Main Channel</span>
+                    </div>
+                    <div class="card__body tiktok-body-layout">
+                        <div class="tiktok-text-group">
+                            <h3>TikTok Channel</h3>
+                            <p>Highlights & Funny Moments</p>
+                        </div>
+                        <div class="tiktok-channel-img">
+                            <img src="assets/avatar.jpg" onerror="this.src='https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/6b019e6b8d5c478b318b823587458e5d~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=f8f77826&x-expires=1765220400&x-signature=%2FX%2FqxOSJEw1hiEwjFHn5iFemMJc%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my3'" alt="TikTok Logo">
+                        </div>
+                    </div>
+                    <div class="card__arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+                </div>
+            </a>
+
+            <a href="https://lxstartelecom.com.vn/" target="_blank" rel="noopener" class="card card--portfolio js-tilt">
+                <div class="animated-border"></div>
+                <div class="card__bg-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                <div class="card__content">
+                    <div class="card__header">
+                        <i class="fa-solid fa-laptop-code card__icon"></i>
+                        <span class="card__badge">web Site</span>
+                    </div>
+                    <div class="card__body tiktok-body-layout">
+                        <div class="tiktok-text-group">
+                            <h3>My website</h3>
+                            <p>Projects & Creative Work</p>
+                        </div>
+                        <div class="portfolio-icon">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                    </div>
+                    <div class="card__arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+                </div>
+            </a>
+
+            <a href="https://www.facebook.com/profile.php?id=61583255074042" target="_blank" rel="noopener" class="card card--square card--youtube-neon js-tilt">
+                <div class="rotate-layer"></div>
+                <div class="mask-layer"></div>
+                <div class="card__content center-content">
+                    <div class="icon-wrapper icon-pulse">
+                        <i class="fa-brands fa-youtube"></i>
+                    </div>
+                    <h3 class="card-title">MY Facebook</h3>
+                    <p class="card-sub">Follow Me On Facebook</p>
+                </div>
+            </a>
+
+            <a href="https://zalo.me/g/e2pqu7v6x5hlbjb82zxw" target="_blank" rel="noopener" class="card card--square card--discord js-tilt">
+                <div class="rotate-layer"></div>
+                <div class="mask-layer"></div>
+                <div class="card__content center-content">
+                    <div class="icon-wrapper icon-float">
+                        <i class="fa-brands fa-discord"></i>
+                    </div>
+                    <h3 class="card-title">My zalo group</h3>
+                    <p class="card-sub">Join My Group</p>
+                    <div class="online-dot"></div>
+                </div>
+            </a>
+
+            <!-- ============================================== -->
+            <!-- SECTION: VALORANT TOOLS -->
+            <!-- ============================================== -->
+            <div class="section-title title-tools title-val-tools">
+                <span>LXstarlaucher</span>
+                <div class="line"></div>
+            </div>
+
+            <!-- Card 1: VALORANT TWEAKS -->
+            <a href="index.html#" onclick="showDiscordModal(event)" class="card card--square card--val-tweaks js-tilt">
+                <div class="rotate-layer"></div>
+                <div class="mask-layer"></div>
+                <div class="card__content center-content">
+                    <div class="icon-wrapper icon-pulse">
+                        <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAA0KChUPFRYVFRYkGRoZJCUlHh4lJSkiJSQlIikpKyotLSorKSsoLjEuKCstLjU1Li0xPDo8MTs3NztBOkE6Oi8BDQkJEg4SERISER0SFhIdGxoUFBobIBcYFxgXICIeHB0dHB4iHxwaFxocHyAdIyMdICIaHhoiISIiITI2MjEx///CABEIBOYE5gMBIgACEQEDEQH/xACnAAEBAQEBAQEAAAAAAAAAAAAABQYDBAIBAQEBAAAAAAAAAAAAAAAAAAAABBAAAQIHAAMBAQAAAAAAAAAAAwACAQQVMDIzcBRQYBHAEQABBQEBAAAAAAAAAAAAAAACAwY0YHOyABIAAQQDAQEBAQAAAAAAAAAAYQARMHABEqFgUDHAEwACAQMFAAIBBQAAAAAAAAAAAaERMHBRYZGx8FBgITFBwNHx/9oADAMBAAIRAxEAAAKWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABUl1IopYttAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVJdSKKWLbQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFSXUiili20AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABUl1IopYttAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVJdSKKWLbQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFSXUiili20AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABUl1IopYttAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVJdSKKWLbQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFSXUiili20AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABUl1IopYttAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVJdSKKWLbQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFSXUiili20AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABUl1IopYttAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVJdSKKWLbQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFSXUiili20AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABUl1IopYttAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVJdSKKWLbQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFSXUiili20AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABUl1IopYttAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVJdSKKWLbQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFSXUiili20AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABUl1IopYttAAAAAAAAAAAAAAAAAAAAAAAA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AAAAAAAAAAAAAAAAAAAAAAAAAABUl1IopYttAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVJdSKKWLbQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFSXUiili20AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABUl1IopYttAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVJdSKKWLbQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFSXUiili20AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABUl1IopYttAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVJdSKKWLbQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFSXUiili20AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABUl1IopYttAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVJdSKKWLbQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFSXUiili20AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABUl1IopYttAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVJdSKKWLbQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFSXUiili20AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABUl1IopYttAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVJdSKKWLbQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFSXUiili20AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABUl1Iopaottlqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqglqgl1CKL/2gAMAwEAAhEDEQAAIQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADDDDDCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFADDCAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFHBCAPJIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAABEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFIAAAEFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFABAHIFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAACADFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCAAGABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFABIBCBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAEAFIFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAIAABEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFIAAABBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAACAKEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAEJIAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFEAKAGFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAEAKFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAIAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFABIAGFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAIAGAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFGAABCFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAPAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAIKFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAEAAKFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFEIABBFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFABABKFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFEEAAHEFCDDDDDDDDDDCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFBAAAAAGBACACACACAEKKAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAABKBAFAOACAEAAGEKAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCAIACAIFAIACAAACBAKKAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFMBPDBPGJPCDCHJFGMPCKAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFHDABDBDCDDBDADBBBDHKAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAIEAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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zzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzjzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzTDDDDTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyxjDDQzDzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzwjjTwCRzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxTzizwDzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzTzzyxTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxTjyBxTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxTzTzBTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxzzyTwTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxThzjQTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxSzyhxTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxRzzzhDzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzTzzzgTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxTzTxRDzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyxhzxTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzwTxTyRTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyzxRTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxRzzzxTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxThzyRTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxRzyTxTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzwzzzjRTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxTzwDxTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxTzxxRTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzSzzxRTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyRzzjhTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxTjzhRTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxTzyzwDzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzwSzzyByzTTDDDjDjDDDjzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxDzzzzxQgwQwQwQwQxzBTzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxTzzzhTjyjwTzTyzzyTzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxzxzzTxyjxzzTzzzTjxBTzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyTgDDgCRgDTDSBiiQwDTzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzhgAwhAiBQCAhAxAgggRxTzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzwzzzzzzzzzzzzzzzzzxyzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCP/9oACAECEQE/AKc8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e75KeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJTzHo6e8JKeY9HT3hJT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" alt="Valorant Tweaks Icon" style="width: 50px; height: 50px; filter: drop-shadow(0 0 10px rgba(255, 70, 85, 0.8));">
+                    </div>
+                    <h3 class="card-title">LXstar</h3>
+                    <p class="card-sub">Launcher for Minecraft</p>
+                </div>
+            </a>
+
+            <!-- Card 2: LICENSE PAGE -->
+            <a href="https://lxstarlauncher.netlify.app/" target="_blank" rel="noopener" class="card card--square card--license js-tilt">
+                <div class="rotate-layer"></div>
+                <div class="mask-layer"></div>
+                <div class="card__content center-content">
+                    <div class="icon-wrapper icon-float">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <h3 class="card-title">my project</h3>
+                    <p class="card-sub">project description</p>
+                </div>
+            </a>
+
+
+            <!-- Card 3: BEACONS PAGE -->
+
+            <a href="https://beacons.ai/103_pu/" target="_blank" rel="noopener" class="card card--wide card--beacons js-tilt">
+                <div class="card__content row-content">
+                    <div class="icon-box-small">
+                        <img src="https://github.githubassets.com/favicons/favicon.png" onerror="this.src='data:image/svg+xml;base64,...'" alt="GitHub" class="other-logo-img">
+                    </div>
+                    <div class="text-box">
+                        <h3>My Project bio</h3>
+                        <p>project Bio</p>
+                    </div>
+                    <div class="action-box"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                </div>
+            </a>
+
+        </div>
+
+        <footer class="footer">
+            <p>Văn Lương <i class="fa-solid fa-certificate verify-icon"></i> | HS Lớp 9D1 Trường THCS Bản Lầm</p>
+        </footer>
+
+    </main>
+
+    <!-- ============================================== -->
+    <!-- DISCORD MODAL TẢI VALORANT TWEAKS -->
+    <!-- ============================================== -->
+    <div id="discord-modal" role="dialog" aria-modal="true" aria-labelledby="discord-modal-title" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(10, 10, 15, 0.85); z-index: 9999; justify-content: center; align-items: center; backdrop-filter: blur(8px);">
+        <div class="modal-content" style="background: rgba(25, 25, 35, 0.95); border: 1px solid #ff4655; border-radius: 20px; padding: 35px 25px; max-width: 400px; width: 90%; text-align: center; color: white; box-shadow: 0 0 30px rgba(255, 70, 85, 0.2); transition: all 0.3s ease; transform: scale(0.9); opacity: 0;">
+
+            <!-- Discord Icon Header -->
+            <div style="background: rgba(88, 101, 242, 0.15); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                <i class="fa-brands fa-discord" style="font-size: 40px; color: #5865F2;"></i>
+            </div>
+
+            <h3 id="discord-modal-title" style="font-size: 24px; margin-bottom: 12px; font-weight: 800; font-family: 'Outfit', sans-serif;">DOWNLOAD TWEAKS</h3>
+            <p style="color: #b0b0b0; margin-bottom: 30px; font-size: 15px; line-height: 1.6; font-family: 'Outfit', sans-serif;">
+                Để tải công cụ <strong>Launcher</strong>, vui lòng tham gia Discord server của Văn Lương và truy cập kênh <span style="color: #ff4655; font-weight: bold;">#val-tweaks</span>.
+            </p>
+
+            <!-- Buttons -->
+            <div style="display: flex; gap: 12px; justify-content: center;">
+                <button onclick="closeDiscordModal()" style="flex: 1; padding: 12px 0; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: white; cursor: pointer; font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; transition: 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+                    CANCEL
+                </button>
+
+                <a href="https://discord.gg/evq3f7cQT" target="_blank" rel="noopener" onclick="closeDiscordModal()" style="flex: 1; padding: 12px 0; border-radius: 12px; border: none; background: #5865F2; color: white; cursor: pointer; font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.3s; box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(88, 101, 242, 0.6)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(88, 101, 242, 0.4)'">
+                    <i class="fa-brands fa-discord"></i> JOIN
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script xử lý Modal -->
+    <script>
+    (() => {
+        const modal = document.getElementById('discord-modal');
+        const content = modal.querySelector('.modal-content');
+        let hideTimer = null;      // timer cũ không được quản lý: mở lại trong 300ms
+        let lastFocus = null;      // là bị chính nó đóng lại ngay.
+
+        window.showDiscordModal = (e) => {
+            if (e) e.preventDefault();
+            clearTimeout(hideTimer);
+            lastFocus = document.activeElement;
+            modal.style.display = 'flex';
+            void modal.offsetWidth;                    // re-flow để CSS transition chạy
+            content.style.transform = 'scale(1)';
+            content.style.opacity = '1';
+            modal.querySelector('a, button')?.focus();
+        };
+
+        window.closeDiscordModal = () => {
+            clearTimeout(hideTimer);
+            content.style.transform = 'scale(0.9)';
+            content.style.opacity = '0';
+            hideTimer = setTimeout(() => { modal.style.display = 'none'; }, 300);
+            lastFocus?.focus();                        // trả focus về chỗ đã bấm
+        };
+
+        // Bấm ra vùng đen bên ngoài cũng sẽ đóng popup
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeDiscordModal(); });
+
+        // Esc để đóng, và giữ Tab lại trong modal khi nó đang mở.
+        document.addEventListener('keydown', (e) => {
+            if (modal.style.display !== 'flex') return;
+            if (e.key === 'Escape') { closeDiscordModal(); return; }
+            if (e.key !== 'Tab') return;
+            const stops = [...modal.querySelectorAll('a[href], button')];
+            if (!stops.length) return;
+            const first = stops[0], last = stops[stops.length - 1];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        });
+    })();
+    </script>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

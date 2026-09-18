@@ -1,0 +1,1355 @@
+/* ================= VARIABLES ================= */
+:root {
+    --bg-dark: #050505;
+    --card-bg: #111111;
+    --card-border: rgba(255, 255, 255, 0.08);
+    --text-main: #ffffff;
+    --text-sub: #a0a0a0;
+
+    /* Brand Colors */
+    --color-tiktok: #00f2ea;
+    --color-tiktok-2: #ff0050;
+    --color-youtube: #ff0000;
+    --color-discord: #5865F2;
+    --color-success: #23a559;
+    --color-val: #ff4655;
+    --color-roblox: #eff0f1;
+    --color-zing: #ff8c00;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+    /* FIX: Chặn cuộn ngang trên mobile */
+}
+
+body {
+    background-color: var(--bg-dark);
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.bg-video {
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+    overflow: hidden;
+    pointer-events: none;
+    background: #050505;
+}
+
+.bg-video video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 177.78vh;
+    height: 56.25vw;
+    min-width: 100vw;
+    min-height: 100vh;
+    transform: translate(-50%, -50%) scale(1.08);
+    border: 0;
+    opacity: 0.48;
+    filter: saturate(0.75) contrast(1.05);
+}
+
+#bg-audio-player {
+    position: fixed;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+.bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.78);
+    /* Lớp phủ tối giúp text rõ hơn */
+    z-index: -4;
+    pointer-events: none;
+}
+
+.bg-text-effect {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Space Mono', monospace;
+    font-size: 25vw;
+    font-weight: 800;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.08);
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.5));
+    z-index: -2;
+    pointer-events: none;
+    user-select: none;
+    animation: textFloat 12s ease-in-out infinite alternate;
+}
+
+@keyframes textFloat {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    100% {
+        transform: translate(-50%, -45%) scale(1.05);
+    }
+}
+
+.bg-gradient {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(112, 0, 255, 0.1) 0%, rgba(0, 0, 0, 0) 65%);
+    z-index: -3;
+    animation: spinBG 40s linear infinite;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+@keyframes spinBG {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.bg-particles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -3;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* ================= LAYOUT ================= */
+.main-wrapper {
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    z-index: 1;
+}
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 40px;
+    align-items: stretch;
+}
+
+/* ================= CARD STYLE ================= */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 26px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    text-decoration: none;
+    color: var(--text-main);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), 0 10px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s, box-shadow 0.3s;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    z-index: 0;
+}
+
+/* Entrance state applies only when JS is present to lift it. Without .js every
+   card renders in its final position, so the page is readable with no JS at all
+   instead of being 11 invisible boxes.
+   card-force-reveal covers the other failure mode: .js is set but js/main.js
+   never runs, which would otherwise leave the IntersectionObserver's opacity: 0
+   in place forever. Trade-off: a card still below the fold at 6s reveals
+   without its scroll animation. Guaranteed visibility beats the effect. */
+html.js .card:not(.in-view) {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+    animation: card-force-reveal 0.5s ease 6s forwards;
+}
+
+@keyframes card-force-reveal {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.card.in-view {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.card:active {
+    transform: scale(0.96) !important;
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0), inset 0 0 20px rgba(255, 255, 255, 0.05);
+    transition: transform 0.1s;
+}
+
+@media (hover: hover) {
+    .card:hover {
+        transform: translateY(-5px) scale(1.02);
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        z-index: 10;
+    }
+}
+
+.card__content {
+    padding: 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 5;
+}
+
+
+/* ================= COMPONENT STYLES ================= */
+.card--profile {
+    grid-column: span 2;
+    padding: 10px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.4));
+}
+
+.shimmer-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    background-size: 200% 100%;
+    animation: shimmer 5s infinite linear;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.card--profile .card__content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+.profile-img-box {
+    position: relative;
+    width: 85px;
+    height: 85px;
+    flex-shrink: 0;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    width: 18px;
+    height: 18px;
+    background: var(--color-success);
+    border-radius: 50%;
+    border: 3px solid var(--bg-dark);
+    box-shadow: 0 0 10px var(--color-success);
+}
+
+.profile-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-info h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    font-family: 'Space Mono', monospace;
+    line-height: 1.2;
+    margin: 0 0 5px 0;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.profile-tag {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    margin-top: 4px;
+}
+
+.card--tiktok {
+    grid-column: span 2;
+    min-height: 180px;
+    background: #0a0a0a;
+    border: none;
+    overflow: hidden;
+}
+
+.card--portfolio {
+    grid-column: span 2;
+    min-height: 180px;
+    background: #0d0b16;
+    border: none;
+    overflow: hidden;
+    --portfolio-accent: #a78bfa;
+    --portfolio-accent-2: #6366f1;
+}
+
+.tiktok-body-layout {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    width: 100%;
+}
+
+.tiktok-text-group {
+    flex: 1;
+    min-width: 0;
+    max-width: 71%;
+}
+
+.card--tiktok h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.6rem;
+    line-height: 1.2;
+}
+
+.tiktok-channel-img {
+    width: 65px;
+    height: 65px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    background: #000;
+    transition: transform 0.3s ease;
+}
+
+.card--tiktok:hover .tiktok-channel-img,
+.card--portfolio:hover .portfolio-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.card--tiktok:hover .tiktok-channel-img {
+    border-color: var(--color-tiktok);
+}
+
+.card--portfolio:hover .portfolio-icon {
+    border-color: var(--portfolio-accent);
+}
+
+.tiktok-channel-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.animated-border {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent 0deg, transparent 270deg, var(--color-tiktok) 300deg, var(--color-tiktok-2) 360deg);
+    animation: border-rotate 6s linear infinite;
+    z-index: 0;
+}
+
+.card--portfolio .animated-border {
+    background: conic-gradient(from 0deg, transparent 0deg, transparent 270deg, var(--portfolio-accent) 300deg, var(--portfolio-accent-2) 360deg);
+}
+
+.card--tiktok::after,
+.card--portfolio::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(10, 10, 10, 0.98));
+    border-radius: 24px;
+    z-index: 0;
+}
+
+@keyframes border-rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.card--tiktok .card__content,
+.card--portfolio .card__content {
+    z-index: 2;
+}
+
+.portfolio-icon {
+    display: grid;
+    place-items: center;
+    width: 65px;
+    height: 65px;
+    flex-shrink: 0;
+    border: 2px solid rgba(167, 139, 250, 0.32);
+    border-radius: 50%;
+    color: var(--portfolio-accent);
+    background: rgba(99, 102, 241, 0.12);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    font-size: 1.35rem;
+    transition: transform 0.3s ease;
+}
+
+.card--portfolio .card__icon,
+.card--portfolio .card__bg-icon {
+    color: var(--portfolio-accent);
+}
+
+.card--portfolio .card__icon {
+    text-shadow: 0 0 15px rgba(167, 139, 250, 0.8);
+}
+
+.card--portfolio .card__arrow {
+    transition: all 0.3s;
+}
+
+.card--portfolio:active .card__arrow {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Keep the Portfolio card aligned with TikTok while using a violet accent. */
+.card--portfolio .card__content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.card--portfolio .card__body {
+    flex: 1;
+}
+
+.card__bg-icon {
+    position: absolute;
+    right: -20px;
+    bottom: -40px;
+    font-size: 11rem;
+    opacity: 0.05;
+    transform: rotate(-15deg);
+    z-index: 1;
+}
+
+.card__badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.card__icon {
+    font-size: 1.6rem;
+}
+
+.card__arrow {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    font-size: 1.5rem;
+    transform: translateX(-10px);
+    opacity: 0.5;
+    transition: all 0.3s;
+}
+
+.card--tiktok:active .card__arrow {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.card--square {
+    height: 100%;
+    aspect-ratio: 1/1;
+    background: transparent;
+    border: none;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    --card-color: #ffffff;
+}
+
+.rotate-layer {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent 0deg, transparent 240deg, var(--card-color) 320deg, transparent 360deg);
+    animation: rotate-border 6s linear infinite;
+    z-index: -2;
+}
+
+.mask-layer {
+    position: absolute;
+    inset: 2px;
+    background: var(--card-bg);
+    border-radius: 22px;
+    z-index: -1;
+}
+
+@keyframes rotate-border {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.center-content {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.icon-wrapper {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+}
+
+.card-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.card-sub {
+    font-size: 0.8rem;
+    color: var(--text-sub);
+}
+
+.card--youtube-neon {
+    --card-color: var(--color-youtube);
+}
+
+.card--youtube-neon .rotate-layer {
+    animation-duration: 5s;
+}
+
+.card--youtube-neon i {
+    color: var(--color-youtube);
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+}
+
+.icon-pulse {
+    animation: pulse-red 2s infinite;
+}
+
+.card--discord {
+    --card-color: var(--color-discord);
+}
+
+.card--discord .rotate-layer {
+    animation-duration: 7s;
+}
+
+.card--discord i {
+    color: var(--color-discord);
+    text-shadow: 0 0 20px rgba(88, 101, 242, 0.4);
+}
+
+.online-dot {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 12px;
+    height: 12px;
+    background: var(--color-success);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--color-success);
+    animation: blink 2s infinite;
+}
+
+.card--roblox {
+    --card-color: var(--color-roblox);
+}
+
+.card--roblox .rotate-layer {
+    animation-duration: 8s;
+}
+
+.card--roblox svg {
+    width: 60px;
+    height: 60px;
+    color: var(--color-roblox);
+    filter: drop-shadow(0 4px 0 #000);
+}
+
+.icon-bounce-block {
+    animation: bounce-block 3s infinite;
+}
+
+.card--zingspeed {
+    --card-color: var(--color-zing);
+}
+
+.card--zingspeed .rotate-layer {
+    animation-duration: 5.5s;
+}
+
+.game-logo-img {
+    width: 90px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(255, 140, 0, 0.5));
+}
+
+.other-logo-img {
+    width: 50px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(255, 140, 0, 0.5));
+}
+
+.speed-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(90deg, transparent 0, transparent 20px, rgba(255, 140, 0, 0.05) 20px, rgba(0, 168, 255, 0.05) 40px);
+    opacity: 0.6;
+    transform: skewX(-20deg);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.card--valorant {
+    grid-column: span 2;
+    min-height: 110px;
+    background: linear-gradient(90deg, #0f0f0f 0%, #1a0506 100%);
+    overflow: hidden;
+    animation: border-glitch 4s infinite;
+    border: 1px solid rgba(255, 70, 85, 0.2);
+}
+
+@keyframes border-glitch {
+
+    0%,
+    95% {
+        border-color: rgba(255, 70, 85, 0.2);
+    }
+
+    96%,
+    100% {
+        border-color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+.card__bg-glow-val {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 80% 50%, rgba(255, 70, 85, 0.2) 0%, transparent 70%);
+}
+
+.row-content {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.valorant-logo-box {
+    width: 55px;
+    height: 55px;
+    color: var(--color-val);
+    filter: drop-shadow(0 0 8px rgba(255, 70, 85, 0.6));
+}
+
+.val-svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+}
+
+.text-box h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.val-arrow {
+    margin-left: auto;
+    color: var(--color-val);
+    font-size: 1.3rem;
+    opacity: 0.8;
+}
+
+.card--wide {
+    grid-column: span 2;
+    min-height: 90px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.icon-box-small {
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: var(--text-sub);
+    overflow: hidden;
+}
+
+.action-box {
+    margin-left: auto;
+    color: var(--text-sub);
+    font-size: 1.1rem;
+}
+
+.section-title {
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.section-title span {
+    white-space: nowrap;
+}
+
+.section-title .line {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.title-social {
+    color: #00fff9;
+}
+
+.title-social .line {
+    background: linear-gradient(90deg, var(--color-tiktok), transparent);
+}
+
+.title-social span {
+    animation: type-blink 2s infinite;
+    border-right: 3px solid var(--color-tiktok);
+    padding-right: 5px;
+}
+
+@keyframes type-blink {
+
+    0%,
+    100% {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: var(--color-tiktok);
+    }
+}
+
+.title-game {
+    color: var(--color-val);
+}
+
+.title-game .line {
+    background: linear-gradient(90deg, var(--color-val), transparent);
+}
+
+.title-game span {
+    animation: text-flicker 3s infinite;
+    text-shadow: 0 0 5px var(--color-val);
+}
+
+@keyframes text-flicker {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    92% {
+        opacity: 1;
+    }
+
+    93% {
+        opacity: 0.5;
+        transform: skewX(10deg);
+    }
+
+    94% {
+        opacity: 1;
+        transform: skewX(0deg);
+    }
+
+    96% {
+        opacity: 0.5;
+    }
+
+    97% {
+        opacity: 1;
+    }
+}
+
+.title-others {
+    color: #a0a0a0;
+}
+
+.title-others .line {
+    background: linear-gradient(90deg, #a0a0a0, transparent);
+}
+
+.title-others span {
+    animation: text-spacing 4s ease-in-out infinite alternate;
+}
+
+@keyframes text-spacing {
+    0% {
+        letter-spacing: 1px;
+        opacity: 0.7;
+    }
+
+    100% {
+        letter-spacing: 3px;
+        opacity: 1;
+        text-shadow: 0 0 8px white;
+    }
+}
+
+@keyframes pulse-red {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes bounce-block {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(3deg);
+    }
+}
+
+.glitch-text {
+    position: relative;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.glitch-text::before {
+    left: 2px;
+    text-shadow: -1px 0 #ff00c1;
+    clip-path: inset(40% 0 61% 0);
+    animation: glitch-anim 4s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+    left: -2px;
+    text-shadow: -1px 0 #00fff9;
+    clip-path: inset(20% 0 80% 0);
+    animation: glitch-anim-2 4s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% {
+        clip-path: inset(40% 0 61% 0);
+    }
+
+    20% {
+        clip-path: inset(92% 0 1% 0);
+    }
+
+    40% {
+        clip-path: inset(43% 0 1% 0);
+    }
+
+    60% {
+        clip-path: inset(25% 0 58% 0);
+    }
+
+    80% {
+        clip-path: inset(54% 0 7% 0);
+    }
+
+    100% {
+        clip-path: inset(58% 0 43% 0);
+    }
+}
+
+@keyframes glitch-anim-2 {
+    0% {
+        clip-path: inset(20% 0 80% 0);
+    }
+
+    20% {
+        clip-path: inset(50% 0 20% 0);
+    }
+
+    40% {
+        clip-path: inset(10% 0 40% 0);
+    }
+
+    60% {
+        clip-path: inset(80% 0 5% 0);
+    }
+
+    80% {
+        clip-path: inset(5% 0 80% 0);
+    }
+
+    100% {
+        clip-path: inset(40% 0 10% 0);
+    }
+}
+
+@media (max-width: 600px) {
+    .bento-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .card--square {
+        grid-column: span 1;
+        height: 100%;
+        min-height: 160px;
+    }
+
+    .profile-info h1 {
+        font-size: 1.8rem;
+    }
+
+    .card--tiktok h3 {
+        font-size: 1.4rem;
+    }
+
+    .bg-text-effect {
+        font-size: 15vw;
+        opacity: 0.2;
+    }
+
+    .section-title {
+        margin-top: 20px;
+        font-size: 0.8rem;
+    }
+
+    .tiktok-channel-img {
+        width: 55px;
+        height: 55px;
+    }
+}
+
+/* =========================================
+   CINEMATIC INTRO (CLEAN & ELEGANT)
+   ========================================= */
+
+body.is-loading {
+    overflow: hidden;
+}
+
+/* Gated on html.js so the page is never hidden when JS is unavailable.
+   visibility: hidden (not just opacity) also removes every link from the tab
+   order and from hit-testing, so a tap during the gate can no longer navigate
+   off-site from a blank screen.
+   force-reveal is a CSS-only failsafe: if js/main.js never executes, the blur
+   still lifts on its own instead of leaving a permanently unreadable page. */
+html.js body.is-loading .main-wrapper,
+html.js body.is-loading .bg-text-effect {
+    opacity: 0;
+    visibility: hidden;
+    filter: blur(20px);
+    transform: scale(1);
+    transition: none;
+    animation: force-reveal 0.3s ease 3s forwards;
+}
+
+@keyframes force-reveal {
+    to {
+        opacity: 1;
+        visibility: visible;
+        filter: none;
+    }
+}
+
+body.loaded .main-wrapper,
+body.loaded .bg-text-effect {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+    transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#cinematic-intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    /* CSS-only failsafe. #cinematic-intro.fade-out below is more specific, so
+       when js/main.js runs it still drives the exit at 2.2s; this delayed copy
+       only matters when main.js never executes, where it stops the overlay
+       from covering the first screen forever. */
+    animation: elegantFadeOut 1s ease 3s forwards;
+}
+
+/* No JS means no intro to play, so do not spend the first viewport on it. */
+html:not(.js) #cinematic-intro {
+    display: none;
+}
+
+.intro-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(30, 30, 30, 1) 0%, rgba(0, 0, 0, 1) 80%);
+    opacity: 0;
+    animation: bgFadeIn 1s ease forwards;
+}
+
+@keyframes bgFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.intro-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    font-family: 'Space Mono', monospace;
+}
+
+.intro-line {
+    opacity: 0;
+    display: block;
+}
+
+/* LINE 1: WELCOME... */
+.line-1 {
+    font-size: 1.2rem;
+    letter-spacing: 5px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    animation: fadeInUpFade 1.5s ease forwards;
+}
+
+/* LINE 2: 103_PU */
+.line-2 {
+    font-size: 5rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-top: 10px;
+    background: linear-gradient(90deg, #fff, var(--color-tiktok));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    transform: scale(0.9);
+    animation: scaleUpReveal 1.5s 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes fadeInUpFade {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(5px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes scaleUpReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+        filter: blur(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+#cinematic-intro.fade-out {
+    animation: elegantFadeOut 1s ease forwards;
+}
+
+@keyframes elegantFadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@media (max-width: 600px) {
+    .line-1 {
+        font-size: 0.9rem;
+        letter-spacing: 3px;
+    }
+
+    .line-2 {
+        font-size: 3.5rem;
+    }
+}
+
+/* VALORANT TOOLS specific styles */
+.title-val-tools {
+    color: #a855f7; /* Purple base */
+}
+
+.title-val-tools .line {
+    background: linear-gradient(90deg, #a855f7, transparent);
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
+.title-val-tools span {
+    animation: purple-neon-pulse 2s infinite alternate;
+}
+
+@keyframes purple-neon-pulse {
+    0% {
+        text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7;
+        opacity: 0.8;
+    }
+    100% {
+        text-shadow: 0 0 10px #a855f7, 0 0 20px #a855f7, 0 0 30px #a855f7;
+        opacity: 1;
+        transform: scale(1.02);
+    }
+}
+
+.card--val-tweaks {
+    --card-color: #ff4655;
+}
+
+.card--val-tweaks .rotate-layer {
+    animation-duration: 4.5s;
+}
+
+.card--val-tweaks svg {
+    color: var(--color-val, #ff4655);
+    filter: drop-shadow(0 0 10px rgba(255, 70, 85, 0.8));
+}
+
+.card--license {
+    --card-color: #00ff87;
+}
+
+.card--license .rotate-layer {
+    animation-duration: 6s;
+}
+
+.card--license i {
+    color: #00ff87;
+    text-shadow: 0 0 15px rgba(0, 255, 135, 0.8);
+}
+/* ==============================================
+   SKIP INTRO
+   ============================================== */
+
+.intro-skip {
+    position: absolute;
+    bottom: 40px;
+    right: 24px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.82);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    z-index: 2;
+    /* Xuất hiện muộn hơn intro một nhịp để không giành sự chú ý với dòng chữ. */
+    opacity: 0;
+    animation: introSkipIn 0.4s ease 0.7s forwards;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.intro-skip:hover,
+.intro-skip:focus-visible {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.45);
+    color: #ffffff;
+}
+
+@keyframes introSkipIn {
+    to { opacity: 1; }
+}
+
+/* ==============================================
+   FOCUS — bàn phím thấy được mình đang ở đâu
+   Cả trang trước đây chỉ có đúng 1 :focus-visible, nên tab qua 12 link là
+   tab trong bóng tối. Ring chỉ hiện khi dùng bàn phím, chuột không thấy gì.
+   ============================================== */
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid #00f0ff;
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+.card:focus-visible {
+    outline: 2px solid #00f0ff;
+    outline-offset: 4px;
+}
+
+/* ==============================================
+   REDUCED MOTION
+   21 animation vô hạn là vấn đề với người bị say chuyển động (WCAG 2.2.2).
+   Giao diện, màu, layout không đổi một pixel — chỉ dừng thứ đang tự chạy.
+   Người không bật tuỳ chọn này sẽ thấy trang y như cũ.
+   ============================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    /* Những layer chỉ tồn tại để chuyển động thì tắt hẳn, vì đứng yên chúng
+       chỉ còn là vệt sáng vô nghĩa nằm đè lên nội dung. */
+    .bg-particles,
+    .speed-lines,
+    .nvidia-scanline,
+    .shimmer-layer,
+    .rotate-layer {
+        display: none;
+    }
+
+    /* Card phải hiện, không phụ thuộc animation reveal nữa. */
+    html.js .card:not(.in-view) {
+        opacity: 1;
+        transform: none;
+    }
+
+    #cinematic-intro {
+        display: none;
+    }
+}
