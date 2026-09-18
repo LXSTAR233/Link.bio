@@ -8,13 +8,10 @@
 
     /* Brand Colors */
     --color-tiktok: #00f2ea;
-    --color-tiktok-2: #ff0050;
-    --color-youtube: #ff0000;
-    --color-discord: #5865F2;
+    --color-tiktok-2: #4809f3;
+    --color-facebook: #0004ff;
+    --color-zalo: #202dc4;
     --color-success: #23a559;
-    --color-val: #ff4655;
-    --color-roblox: #eff0f1;
-    --color-zing: #ff8c00;
 }
 
 * {
@@ -687,10 +684,10 @@ html.js .card:not(.in-view) {
 .card--valorant {
     grid-column: span 2;
     min-height: 110px;
-    background: linear-gradient(90deg, #0f0f0f 0%, #1a0506 100%);
+    background: linear-gradient(90deg, #6200ff 0%, #6302ff 100%);
     overflow: hidden;
     animation: border-glitch 4s infinite;
-    border: 1px solid rgba(255, 70, 85, 0.2);
+    border: 1px solid rgba(98, 70, 255, 0.2);
 }
 
 @keyframes border-glitch {
@@ -712,7 +709,7 @@ html.js .card:not(.in-view) {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 80% 50%, rgba(255, 70, 85, 0.2) 0%, transparent 70%);
+    background: radial-gradient(circle at 80% 50%, rgba(70, 73, 255, 0.473) 0%, transparent 70%);
 }
 
 .row-content {
@@ -726,7 +723,7 @@ html.js .card:not(.in-view) {
     width: 55px;
     height: 55px;
     color: var(--color-val);
-    filter: drop-shadow(0 0 8px rgba(255, 70, 85, 0.6));
+    filter: drop-shadow(0 0 8px rgba(110, 70, 255, 0.6));
 }
 
 .val-svg {
